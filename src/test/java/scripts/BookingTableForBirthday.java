@@ -3,6 +3,8 @@ package scripts;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import generic.Base_Test;
@@ -25,6 +27,7 @@ public class BookingTableForBirthday extends Base_Test
 		CelebrateBirthday cb=new CelebrateBirthday(driver);
 		cb.setMaxAmt("10000");
 		cb.clickApply();
+		String v=cb.getVal();
 		cb.clickRoofTopDinner();
 		
 		String parent=driver.getWindowHandle();
@@ -46,6 +49,8 @@ public class BookingTableForBirthday extends Base_Test
 		
 		CheckOut ck=new CheckOut(driver);
 		String text=ck.text();
+		Assert.assertEquals(v, text);
+		Reporter.log("booked hotel is matching",true);
 	}
 
 }

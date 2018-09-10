@@ -38,13 +38,27 @@ public class CelebrateBirthday extends Generic_Page {
 		}
 	}
 	@FindBy(xpath="//div[@title='Rooftop Dinner Date']")private WebElement rooftopdinner;
+	public String getVal()
+	{
+		String v="";
+		WebDriverWait wait =new WebDriverWait(driver, 25);
+		try {
+			wait.until(ExpectedConditions.visibilityOf(rooftopdinner));
+			v=rooftopdinner.getText();
+		} catch (Exception e) 
+		{
+			Reporter.log("element is not present "+e,true);
+			Assert.fail();
+		}
+		return v;
+	}
 	public void clickRoofTopDinner()
 	{
 		WebDriverWait wait =new WebDriverWait(driver, 25);
 		try 
 		{
-			wait.until(ExpectedConditions.elementToBeClickable(rooftopdinner));
 			scroll(rooftopdinner);
+			wait.until(ExpectedConditions.elementToBeClickable(rooftopdinner));
 			rooftopdinner.click();
 		} catch (Exception e) 
 		{
