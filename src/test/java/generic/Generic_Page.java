@@ -1,7 +1,14 @@
 package generic;
 
+import java.io.File;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -43,5 +50,39 @@ public class Generic_Page
 	{
 		Select s=new Select(ele);
 		s.selectByVisibleText(text);
+	}
+	public static void getPhoto(String path,WebDriver driver)
+	{
+		try 
+		{
+			Date d=new Date();
+			String s=d.toString();
+			String date=s.replaceAll(":", "-");
+			TakesScreenshot ts=(TakesScreenshot)driver;
+			File src=ts.getScreenshotAs(OutputType.FILE);
+			File dst=new File(path+date+".jpeg");
+			FileUtils.copyFile(src, dst);
+			
+		} catch (Exception e)
+		{
+			Reporter.log("photo path is invalid "+e,true);
+		}
+	}
+	public void scroll(WebElement ele)
+	{
+		WebDriverWait wait =new WebDriverWait(driver, 25);
+		try 
+		{
+			wait.until(ExpectedConditions.visibilityOf(ele));
+			Point p=ele.getLocation();
+			int x=p.getX();
+			int y=p.getY();
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+			js.executeScript("window.scrollBy("+x+","+y+")");
+			
+		} catch (Exception e)
+		{
+			Reporter.log("element to scroll is not present "+e,true);
+		}
 	}
 }

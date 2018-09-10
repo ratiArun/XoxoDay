@@ -31,7 +31,6 @@ public class HomePage extends Generic_Page
 			Reporter.log("element is not present"+e,true);
 			Assert.fail();
 		}
-	
 	}
 	
 	@FindBy(xpath="//a[.='Trips']") private WebElement trips;
@@ -52,6 +51,25 @@ public class HomePage extends Generic_Page
 		{
 			Reporter.log("element is not present"+e,true);
 			Assert.fail();
+		}
+	}
+	@FindBy(xpath="//a[.='Occasions']")private WebElement occasions;
+	public void moveToOccassion()
+	{
+		verifyElement(occasions);
+		mouseHover(occasions);
+	}
+	
+	@FindBy(xpath="//a[.='Birthday']")private WebElement birthday;
+	public void clickBirthday()
+	{
+		WebDriverWait wait=new WebDriverWait(driver, 25);
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(birthday));
+			birthday.click();
+		} catch (Exception e)
+		{
+			Reporter.log("birthday is not clickable "+e,true);
 		}
 	}
 

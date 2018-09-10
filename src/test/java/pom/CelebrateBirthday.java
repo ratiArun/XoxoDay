@@ -10,13 +10,12 @@ import org.testng.Reporter;
 
 import generic.Generic_Page;
 
-public class PlacesNear extends Generic_Page 
-{
-	public PlacesNear(WebDriver driver)
+public class CelebrateBirthday extends Generic_Page {
+
+	public CelebrateBirthday(WebDriver driver)
 	{
 		super(driver);
 	}
-	
 	@FindBy(xpath="//label[@for='max-amt']/..//input") private WebElement maxamt;
 	public void setMaxAmt(String amount)
 	{
@@ -38,20 +37,19 @@ public class PlacesNear extends Generic_Page
 			Assert.fail();
 		}
 	}
-	
-	@FindBy(xpath="//div[@title='Enjoy Go-karting 12 Laps']") private WebElement gokarting;
-	public void clickGOKArting()
+	@FindBy(xpath="//div[@title='Rooftop Dinner Date']")private WebElement rooftopdinner;
+	public void clickRoofTopDinner()
 	{
-		WebDriverWait wait=new WebDriverWait(driver, 25);
+		WebDriverWait wait =new WebDriverWait(driver, 25);
 		try 
 		{
-			wait.until(ExpectedConditions.elementToBeClickable(gokarting));
-			gokarting.click();
+			wait.until(ExpectedConditions.elementToBeClickable(rooftopdinner));
+			scroll(rooftopdinner);
+			rooftopdinner.click();
 		} catch (Exception e) 
 		{
-			Reporter.log("element is not present"+e,true);
+			Reporter.log("rooftopdinner is not clickable "+e,true);
 			Assert.fail();
 		}
 	}
-
 }

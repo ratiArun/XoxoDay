@@ -18,13 +18,13 @@ public class EnjoyGoKarting extends Generic_Page
 		super(driver);
 	}
 	
-	@FindBy(xpath="//input[@aria-label='Select Date']")private WebElement datedropdown;
+	@FindBy(xpath="///div[contains(@class,'DateInput')]/ancestor::div/i")private WebElement datedropdown;
 	public void clickDate()
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 25);
 		try 
 		{
-			//wait.until(ExpectedConditions.elementToBeClickable(datedropdown));
+			wait.until(ExpectedConditions.elementToBeClickable(datedropdown));
 			datedropdown.click();
 		} catch (Exception e) 
 		{

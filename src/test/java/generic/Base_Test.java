@@ -27,7 +27,7 @@ public class Base_Test implements Constants
 		int status=r.getStatus();
 		if(status==2)
 		{
-			
+			Generic_Page.getPhoto(PHOTO_PATH, driver);
 		}
 		driver.quit();
 	}
