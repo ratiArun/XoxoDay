@@ -37,7 +37,7 @@ public class PlacesToVisit extends Generic_Page
 		try 
 		{
 			wait.until(ExpectedConditions.elementToBeClickable(products.get(1)));
-			products.get(1);
+			products.get(1).click();;
 		} catch (Exception e)
 		{
 			Reporter.log("second product is not clickable "+e,true);
