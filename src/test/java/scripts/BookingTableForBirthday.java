@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import generic.Base_Test;
@@ -15,7 +16,7 @@ import pom.RoofTopDinnerDate;
 
 public class BookingTableForBirthday extends Base_Test
 {
-	@Test
+	@Test@Ignore
 	public void testBookingTableForBirthday()
 	{
 		driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);

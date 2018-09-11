@@ -1,5 +1,6 @@
 package pom;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -72,5 +73,13 @@ public class HomePage extends Generic_Page
 			Reporter.log("birthday is not clickable "+e,true);
 		}
 	}
-
+	@FindBy(xpath="//div[@class='site-nav']/following-sibling::div[1]//input[@id='search-input']")
+	private WebElement searchtbox;
+	public void sendValue(String value)
+	{
+		verifyElement(searchtbox);
+		searchtbox.sendKeys(value);
+		searchtbox.sendKeys(Keys.ENTER);
+	}
+	
 }
